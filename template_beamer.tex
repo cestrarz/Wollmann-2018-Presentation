@@ -1,0 +1,140 @@
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[]{hyperref}
+\usepackage{pgfcomp-version-0-65}
+\usepackage{color}
+
+\usetheme{Madrid}
+
+
+\setbeamertemplate{navigation symbols}{} % removes ugly navigation symbols
+\useoutertheme[subsection= false]{miniframes} % adds toc on top
+\setbeamersize{text margin left = 7mm,text margin right = 7mm} 
+
+\let\olditem\item
+\renewcommand{\item}{
+\olditem\vspace{4pt}}
+
+\newcommand{\ind}{\perp\!\!\!\!\perp} 
+
+
+% TOC Before all slides
+% \AtBeginSection[]
+% {
+%     \begin{frame}
+%         \frametitle{Table of Contents}
+%         \tableofcontents[currentsection, hideallsubsections]
+%     \end{frame}
+% }
+
+%TOC Only after introduction
+\AtBeginSection[]
+  {
+    \ifnum \value{framenumber}>1
+      \begin{frame}<beamer>
+      \frametitle{Roadmap}
+      \tableofcontents[currentsection]
+      \end{frame}
+    \else
+    \fi
+  }
+
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+% tikzmark command, for shading over items
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors are taken from the UF Color Standards webpage:
+% http://identity.ufl.edu/color/
+% Color names were taken from hues obtained using Color Name & Hue:
+% https://www.color-blindness.com/color-name-hue/
+
+% Primary Color Palette
+\definecolor{ufl orange}{RGB}{250,70,22}
+\definecolor{ufl blue}{RGB}{0,33,165}
+
+% Secondary Color Palettes
+% Neutral Color Palette
+\definecolor{ufl cashmere}{RGB}{207,182,145}
+\definecolor{ufl ottoman}{RGB}{207,219,203}
+\definecolor{ufl almond}{RGB}{255,239,207}
+\definecolor{ufl mischka}{RGB}{177,179,182}
+% Bright Color Palette
+\definecolor{ufl green}{RGB}{94,142,63}% fern
+\definecolor{ufl violet}{RGB}{89,54,116}% kingfisher daisy
+\definecolor{ufl yellow}{RGB}{252,175,23}% tangerine
+\definecolor{ufl red}{RGB}{215,24,42}% fire engine
+% Muted Color Palette
+\definecolor{ufl muted orange}{RGB}{226,143,65}% fire bush
+\definecolor{ufl muted blue}{RGB}{108,154,195}% shakespeare
+% Preeminence Color Palette
+\definecolor{ufl cruise}{RGB}{168,220,217}
+\definecolor{ufl mantis}{RGB}{128,190,99}
+\definecolor{ufl willowbrook}{RGB}{224,229,205}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% header/footer
+\setbeamercolor*{section in head/foot}{fg = white, bg = ufl blue}
+\setbeamercolor*{mini frame}{fg = ufl orange!80!white}
+\hypersetup{colorlinks=true,linkcolor=ufl blue, urlcolor=ufl muted blue}
+\addtobeamertemplate{headline}{\hypersetup{linkcolor=.}}{}
+\addtobeamertemplate{footline}{\hypersetup{linkcolor=.}}{}
+\addtobeamertemplate{section in toc}{\hypersetup{linkcolor= black}}{}
+\setbeamercolor{author in head/foot}{bg=ufl orange}
+\setbeamercolor{date in head/foot}{bg=ufl orange}
+
+
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{subsection in toc}[square]
+                % below is useless since it gets hyperlinked
+\setbeamercolor*{section in toc}{fg=ufl blue}
+\setbeamercolor*{section in toc shaded}{fg=ufl muted blue}
+\setbeamercolor*{subsection in toc}{fg=ufl orange}
+\setbeamercolor*{subsection in toc shaded}{fg=ufl muted orange}
+\setbeamercolor*{subsubsection in toc}{fg=ufl green}
+\setbeamercolor*{subsubsection in toc shaded}{fg=ufl mantis}
+
+
+% title slide
+\setbeamercolor*{titlelike}{fg= white, bg = ufl blue} % title
+%\titlegraphic{
+%    \includegraphics[width= 1.2 cm]{uflogo.png}
+%}
+
+\setbeamercolor*{author}{fg=black}
+\setbeamercolor*{institute}{fg=black}
+\setbeamercolor*{date}{fg=black}
+
+% blocks
+\setbeamercolor*{block title}{fg= white, bg = ufl blue}
+\setbeamercolor*{block title alerted}{fg=ufl red}
+\setbeamercolor*{block title example}{fg=ufl green}
+\setbeamercolor*{block body}{bg=ufl blue!10!white, fg=black} 
+
+\setbeamercolor*{caption name}{fg=ufl orange}
+\setbeamercolor*{alerted text}{fg=ufl red}
+
+% items and subitems
+\setbeamercolor*{local structure}{fg=ufl blue}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+\setbeamercolor*{item}{fg= ufl orange} 
+\setbeamercolor*{subitem}{fg=ufl green}
+\setbeamercolor*{subsubitem}{fg=ufl violet}
+\setbeamertemplate{section in toc}[rectangle]
+
+
+\setbeamercolor*{button}{bg=ufl muted blue,fg=white}
+\setbeamercolor*{button border}{fg=ufl muted blue}
+
+\institute[UF]{University of Florida}
+\vspace{\baselineskip}
+
+% % For notes on slide
+%\setbeameroption{show notes on second screen=right}

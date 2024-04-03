@@ -1,0 +1,388 @@
+---
+title: \textbf{Trucks without Bailouts :\\} Equilibrium Product Characteristics for Commercial Vehicles
+subtitle: \textit{Wollmann, 2018, AER}
+author: Carlos T. Estrada Arzamendi
+date:  last-modified
+date-format: long
+fig-align: center
+format:
+    beamer:
+        include-in-header: template_beamer.tex
+        aspectratio: 169
+        output-file: Presentation Wollmann (2018).pdf
+        section-titles: false
+        number-depth: 1
+bibliography: references.bib
+---
+
+# Introduction {.unnumbered}
+
+## Motivation
+
+-   Many firms have a **stable set of firms**, but a rapidly **changing** set of **product** offerings.
+
+    -   e.g. US automotive industry, aircraft industry
+
+-   Since entry and exit tend to work in opposite direction of the price mechanism, not accounting for them can **overstate the impact** of a change in market structure to prices and purchases.
+
+    -   e.g. Bankrupcy of a firm $\to$ Market power increases $\to$ Higher markups and profits $\to$ More entrants (new firms/products) $\to$ Prices fall
+
+-   **Counterfactuals** following market structure change depend on accurately determining where and to what extent **product/model-level** entry and exit will occur.
+
+\note{this is a note after the motivation slide.}
+
+## This Paper
+
+-   Assess impact of product-level entry and exit decisions on policy choice
+
+    -   Emphasis on **subsidization** and **antitrust**
+
+-   Develops tractable model of equilibrium product offerings
+
+    -   Recover **sunk cost** of product entry/exit decision and compute counterfactuals
+
+-   Looks at US commercial vehicle segment from 1987-2012
+
+    -   2008-2009 \$85 billion government bailout
+
+------------------------------------------------------------------------
+
+### Why the commercial vehicle market?
+
+-   No entry/exit of firms in 3 decades
+
+-   Ownership concentrated in about 10 firms
+
+-   Manufacturers can quickly swap parts and introduce new models
+
+-   Differs from other vehicle markets due to weight, tariff structure and legal standing
+
+### Main Question:
+
+*"What would have happened to output and prices had the government **not** rescued automakers?"*
+
+-   Alternate policies: Liquidation and acquisition by rivals.
+
+## Preview of Results
+
+-   Product entry and exit have a **dramatic impact** on prices and purchases.
+
+    -   Acquisition: 65% markup without considering entry/exit vs. 17% considering entry/exit.
+
+    -   Liquidation: 27% markup without considering entry/exit vs. 6% considering entry/exit.
+
+-   **Overstate lost of wages** for commercial segment autoworkers by over \$480 million annually.
+
+    -   Could be pivotal for the bailout decision.
+
+## Related Literature
+
+-   @eizenberg2014 : Studies this problem in the context of PC manufacturer's decisions over which processors to include in new laptops to help identify fixed costs.
+
+    -   This paper relies on observable heterogeneity in buyer preferences.
+
+-   @sweeting2013 : Studies switching of radio station formats.
+
+    -   Since it is a dynamic demand, it requires a more restricted action space than this paper.
+
+-   @goolsbee2015 : Argue in favor of the same bailout for the noncommercial segment, mainly on the basis of negative macro feedback effects.
+
+    -   The commercial segment is much smaller and macro feedback effects are second-order.
+
+# Setting and Data
+
+## Commercial Vehicle Segment of US Automotive Industry
+
+-   About 10% of total US automotive sales, or 5% of GDP.
+-   Any on-road vehicle rated over 10,000 lbs and sold domestically.
+-   Broad user base: delivery vans, trucks, dump trucks, highway-trailers.
+-   Largest loads are in excess of 250,000 lbs: oil rigs, turbine engines, etc.
+
+## Data Sources
+
+-   *The Truck Blue Book*: Panel of all commercial **vehicle models** sold in the US from 1986 to 2012.
+
+    -   Brand, model, year, product characteristics (MSRP – in 2005 dollars, load capacity, chassis, etc.)
+
+-   R.L. Polk and Co.'s *New Vehicle Registration Database*: US **vehicle sales** of Class 3 and above.
+
+-   US Census Surveys: **Microdata** on commercial vehicle purchases.
+
+    -   Information about vehicle type, its use and the owners of the vehicles.
+
+## Product Characteristics
+
+Short lists of product characteristics:
+
+-   Gross Vehicle Weight Rating (GWR): Maximum load that may legally rest on the axles ( $\geq$ 10,000 lbs.)
+
+-   Style of cab: Portion of vehicle that encloses the passengers
+
+    -   Three distinct varieties: conventional, "cabover" (flat front) and long/extended (long or difficult hauls).
+
+------------------------------------------------------------------------
+
+![](Tables%20and%20Figures/T01%20Summ%20Stats.png){fig-align="center" width="623"}
+
+```{=html}
+<!-- ## Product Characteristics (cont.)
+
+-   Panel A: Wide variation in offerings over the panel, but constant average throughout the years (not due technological trends).
+
+-   Panel B: Prices have remained relatively stable, but units sold has a lot of variation, but relatively trendless.
+
+-   Panel C: Wide variation of buyers over time, and not dominated by secular trends. -->
+```
+## Average Product Characteristics Conditional on Buyer Type and Road Density
+
+![](Tables%20and%20Figures/F01%20Avg%20Charact.png){fig-align="center" height="80%"}
+
+## Firms
+
+-   Focus on automotive assembly firms (9), treating upstream and downstream operations as independent or completely determined by assembly operations
+
+    -   Assemblers are few in numbers but large in size
+
+    -   They serve as central party to contracts
+
+-   Commercial dealers often carry competing brands.
+
+-   Assembly firms map directly to the "brand" (14) of the vehicle.
+
+-   Separate from foreign market counterparts due to 25% import tariff on trucks.
+
+## The Bailout
+
+-   \$85 billion federal assistance to GM and Chrysler in 2009 constitutes the largest government bailout in modern history (besides financial industry).
+
+Main factors that caused it:
+
+1.  Global recession beginning in 2008
+
+2.  Rise in fuel prices
+
+3.  Legay costs and retiree healthcare benefits
+
+-   ***What would've been the response of surviving firms?***
+
+# Model
+
+## Overview
+
+Two stage model:
+
+1.  Firms simultaneously choose **what products** to offer
+
+2.  After realizing a set of sunk cost disturbances, firms choose **what prices** to charge
+
+Information:
+
+1.  Last period's products, demand and MC shifters, and realization of set of sunk cost disturbances
+
+2.  Realization of demand and MC disturbances
+
+## Stage 2: Demand
+
+Each buyer $r$ decided whether to purchase a vehicle $j$ among $J$ choices to maximize utility. Utility from product $j$ is: $$ U_{r,j} = x_j (\beta_x + \beta_x^o z_r^o + \beta_x^u z_r^u) + p_j \beta_p + \xi_j + \epsilon_{r,j} $$
+
+-   $z_r^o, z_r^u$: observed and unobserved buyer attributes
+
+Using logit, market shares are obtained for a given set of parameters, which can be used to calculate the **unit sales** using the market size: $$ q_{j,t} = M_t s_{j,t} $$
+
+## Stage 2: Prices
+
+Firm $f$ offering set of products $J_{f,t}$ chooses to maximize profits given by $$\Pi_{f,t} = \sum_{j \in J_{f,t}} [p_{j,t} - mc_{j,t}] \cdot s(x_{j,t}, x_{-j, t}, p_t, z_t; \beta, \xi_t) M_t$$
+
+Firms get the FOC w.r.t. prices and set it equal to 0.
+
+Cost Side:
+
+-   $\log mc_{j,t}$ is linear in observable product characteristics, wages, time, and unobserved product time factors $\omega_{j,t}$
+
+-   Coefficients are denoted $\gamma$
+
+## Stage 1: Product Offerings – Profits
+
+Creating expectations over $\xi_{j,t}, \omega_{j,t}$, the expected second stage profits are $$ \pi(J_{f,t}, J_{-f,t}, z_t, w_t; \beta, \gamma, F_\xi, F_\omega) \equiv \int_{\xi', \omega'} \Pi(J_{f,t}, J_{-f,t}, z_t, w_t; \beta, \gamma, \xi', \omega')dF_{\xi'} dF_{\omega'} $$
+
+**Trade-off:** Added profits of new/continued product offerings vs. sunk costs $$ SC_{f,j,t,J_{f,t-1}} = x'_j \tilde{\theta}_{f,x_j, t} \times [ \mathbb{1}\{ j \in J_{f,t,}, j \notin J_{f, t-1}\} + \lambda \cdot \mathbb{1} \{ j \in J_{f,t,}, j \in J_{f, t-1}\}] $$
+
+-   $\lambda \leq 0$: scrap value factor recovered from retiring a model
+
+## Stage 1: Product Offerings – Motivation
+
+From the former head of GM Commercial Division:
+
+> "Each year we look at demand, what we offer, and what the competition is going to offer. We consider changing the lineup like adding a vehicle … We know who the customers would be, what we can charge, and the production costs—so we have the added margin. The margin over the investment gives a return on capital, and **we’ll build it when it crosses some threshold** (emphasis added)."
+
+-   Because of this, Wollmann introduces the idea of **hurdle rates**.
+
+## Stage 1: Product Offerings – Hurdle Rates
+
+### Assumption 1:
+
+For all firms $f$ at time $t$ with information set $\mathcal{I}_{f,t}$, equilibrium product offerings $J_{f,t}$ satisfy: $$
+\frac{\Delta \pi (J_{f,t}, J'_{f,t}, J_{-f,t},z_t, w_t)}{\mathcal{E} [\Delta SC_f (J_{f,t}, J'_{f,t}, J_{f,t-1}) | \mathcal{I}_{f,t}]} \geq Hurdle Rate \hspace{10pt} \forall J'_{j,f} \in \mathcal{J}
+$$
+
+Where $\mathcal{J}$ is the feasible set of product offerings.
+
+-   Allows firms to make expectational errors, while holding that they know $\Delta \pi$.
+-   It also rules out economies of scope, simplifying the problem.
+
+# Estimation
+
+## Stage 2: Demand
+
+Follows closely from @petrin2002, using GMM with an objective function based on two sets of moments:
+
+1.  Standard BLP Moments: $E[\xi | x, w] = 0$, with wage estimates from BLS as an instrument
+
+2.  Microdata Moments: matching mean and variance of buyer attributes from data to the model-predicted analogs.
+
+## Stage 2: Marginal Costs
+
+-   MC are obtained from rearranging Nash Conditions and using the demand-side estimates.
+
+-   Graphically, Wollmann determines that the log of MC is roughly linear in the continues characteristic, such that $\ln(mc) = [x, w] \gamma + \omega$
+
+-   He then solves for $\gamma$ using least squares, since $E[\omega, x, w] = 0$.
+
+-   With this, he can obtain unbiased estimates of $\omega$.
+
+## Stage 1: Sunk Costs – Hurdle Rates
+
+Rearranging the hurdle rate inequality, and using the equation for SC, we find that firms are **weighing expected profit changes vs. sunk costs**[^1]:
+
+[^1]: Since the sunk cost is estimate as scaled by hurdle rate, the hurdle rate does not need to be estimated. $\theta_{f,x_j,t} = -HurdleRate \cdot \tilde{\theta}_{f,x_j,t}$
+
+-   For $j \in J_{f,t}$:
+
+    ```{=tex}
+    \vspace{-15pt}
+    \begin{align*}
+    \Delta \pi(J_{f,t}, J_{f,t} \setminus j,& J_{-f,t}, z_t, w_t) \\
+    & + x'_j (\mathbb{1}\{j \notin J_{f, t-1}\} - \lambda \mathbb{1} \{j \in J_{f, t-1}\}) \cdot \mathcal{E}[\theta_{f,x_j,t} | \mathcal{I}_{f,t}] \geq 0 
+    \end{align*}
+    ```
+
+-   for $j \notin J_{f,t}$:
+
+    ```{=tex}
+    \vspace{-15pt}
+    \begin{align*}
+    \Delta \pi(J_{f,t}, J_{f,t} \cup j,& J_{-f,t}, z_t, w_t) \\
+    & - x'_j (\mathbb{1}\{j \notin J_{f, t-1}\} - \lambda \mathbb{1} \{j \in J_{f, t-1}\}) \cdot \mathcal{E}[\theta_{f,x_j,t} | \mathcal{I}_{f,t}] \geq 0 
+    \end{align*}
+    ```
+
+## Stage 1: Sunk Cost – Additional Assumptions
+
+### Assumption 2
+
+For firm $f$ at time $t$, the sunk cost parameter $\theta_{f,x_j,t}$ is given by $\theta_f + \nu_{2,t}$, where $$
+\theta_f =[\theta_0 + \theta_0^{Big3} + \theta_0^{Jpn}, \hspace{5pt} \theta_g + \theta_g^{Big3}, \hspace{5pt} \theta_{cabover} + \theta_{cabover}^{Jpn}, \hspace{5pt} \theta_{compact}, \hspace{5pt} \theta_{long}]
+$$
+
+and $\nu_{2,t}$ is a vector of mean zero disturbances, with elements $\nu_{2,k,t}$.
+
+-   If actions differ beyond that allowed by this decomposition, it is attributed to $\nu_1$, expectational errors made by firms.
+
+### Assumption 3
+
+Second stage profits are measured without error.
+
+## Stage 1: Sunk Cost – Moment Inequalities
+
+After these two additional assumptions, the previous inequalities can be used to create moments that bound the (scaled) sunk cost parameters $\theta_f, \lambda$:
+
+```{=tex}
+\vspace{-15pt}
+\begin{align*}
+\frac{1}{XTF}& \sum_{x_j} \sum_{t} \sum_{f} h_{f, x_j, t}^i \mathbb{1}\{j \in J_{f, t}\} \\
+&\times \big[ \Delta \hat{\pi}(J_{f, t}, J_{f, t}\setminus j, z_t, w_t) + x'_j \theta_f (\mathbb{1} \{j \notin J_{f, t-1}\} - \lambda \mathbb{1}\{j \in J_{f, t-1}\}) \big] \geq 0\\
+\frac{1}{XTF}& \sum_{x_j} \sum_{t} \sum_{f} h_{f, x_j, t}^i \mathbb{1}\{j \notin J_{f, t}\} \\
+&\times \big[ \Delta \hat{\pi}(J_{f, t}, J_{f, t} \cup j, z_t, w_t) - x'_j \theta_f (\mathbb{1} \{j \notin J{f, t-1}\} - \lambda \mathbb{1}\{j \in J_{f, t-1}\}) \big] \geq 0
+\end{align*}
+```
+where $h$ are weights placed on observations, which depend on the identity of the firms, characteristics of the product offerings, mean buyer attributes as they vary across t, what was offered last period, and what is offered in the current period.
+
+# Descriptive Evidence
+
+## Validity
+
+-   Prior summaries reveal that distribution of potential buyer types vary over time and that different buyers have strongly heterogeneous preference.
+
+-   ... but do firms actually behave as the model describes?
+
+## Firms adjust product offerings to changing demand
+
+![](Tables%20and%20Figures/F02B%20Reduced%20Form.png){fig-align="center" height="80%"}
+
+## Reduced-Form Evidence from Regulation of the Freight Industry
+
+\vspace{-15pt}
+
+![](Tables%20and%20Figures/F03A%20More%20Reduced%20Form.png){fig-align="center" width="85%"}
+
+# Results
+
+## Demand
+
+\vspace{-15pt}
+
+![](Tables%20and%20Figures/T02A%20demand.png){fig-align="center" height="80%"}
+
+## Marginal Costs
+
+![](Tables%20and%20Figures/T02B%20MC.png){fig-align="center"}
+
+-   GWR in 10,000 lbs
+
+## Sunk Costs (from moment inequalities)
+
+![](Tables%20and%20Figures/T03%20SUNK.png){fig-align="center" height="80%"}
+
+# Counterfactuals
+
+## Status Quo: GM and Chrysler Products in 2009
+
+\vspace{-5pt}
+
+![](Tables%20and%20Figures/T04%20PRODUCTS%202009.png){fig-align="center" width="70%"}
+
+\vspace{-10pt}
+
+-   These products will be eliminated or transferred to another firm in the event that GM and Chrysler were liquidated or acquired, respectively
+
+## Policy Alternatives
+
+![](Tables%20and%20Figures/T05%20COUNTERFACTURALS.png){fig-align="center" width="90%"}
+
+\vspace{-10pt}
+
+-   Follow @lee2009 's learning process for equilibrium. @eizenberg2014 's setting has orders of magnitude less possible equilibria.
+
+## Findings: Ford Acquisition
+
+![](Tables%20and%20Figures/F04AB%20COUNTERFACTUALS.png){fig-align="center" height="80%"}
+
+## Findings: Ford Acquisition (cont.)
+
+![](Tables%20and%20Figures/F04CD%20COUNTERFACTUAL.png){fig-align="center" height="80%"}
+
+# Concluding Remarks
+
+## Concluding Remarks
+
+-   Accounting for endogenous changes in product offerings has **first-order** **impacts** on prices, output, and potentially employment in differentiated product markets like autos
+
+-   In the 2009 auto bailout context, allowing for product entry/exit rather than fixing offerings **dramatically affected** markups, production levels, and consumer welfare
+
+-   Exits of major producers could drastically increase markups/market power, but this spurs **entry of new models** by rivals increasing variety and competition
+
+-   Swift product entry/exit following demand shifts suggests **sunk costs are low** enough that firms will reoptimize product lineups chasing profits
+
+-   Ignoring this margin of reoptimizing product lineups can severely **distort analysis** of major policy changes like subsidies, taxes, or mergers
+
+## References {.allowframebreaks}
